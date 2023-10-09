@@ -18,6 +18,8 @@
 ``` pip install -r requirements.txt ```
 
 
-Dentro del proyecto, en la carpeta con# ChallengeFastapi
-# ChallengeFastapi
-# ChallengeFastapi
+Dentro del proyecto, en la carpeta models, en el archivo db.py, completar user y password.
+
+Correr el proyecto:
+
+``` uvicorn app:app --reload ```
