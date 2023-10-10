@@ -9,32 +9,32 @@ from config.db import meta, engine
 
 Base = declarative_base()
 
-clientes = Table("clientes", meta,
-    Column("id_cliente", String(255), primary_key=True, unique=True, default=lambda: str(uuid.uuid4())),
-    Column("nombre", String(255))
+client = Table("client", meta,
+    Column("id", String(255), primary_key=True, unique=True, default=lambda: str(uuid.uuid4())),
+    Column("name", String(255))
 )
-cuenta = Table("cuentas", meta,
-    Column("id_cuenta",String(36), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True),
-    Column("id_cliente",String(255), ForeignKey("clientes.id_cliente")),
-    Column("saldo",Float)
+account = Table("accounts", meta,
+    Column("id",String(36), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True),
+    Column("id_client",String(255), ForeignKey("client.id")),
+    Column("balance",Float)
     )
 
-movimiento = Table("movimientos", meta,
-    Column("id_movimiento",String(36), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True),
-    Column("id_cuenta",String(36), ForeignKey("cuentas.id_cuenta")),
-    Column("tipo",String(255)),
-    Column("importe",Float),
-    Column("fecha",Date),
+motion = Table("motions", meta,
+    Column("id",String(36), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True),
+    Column("id_account",String(36), ForeignKey("accounts.id")),
+    Column("type",String(255)),
+    Column("amount",Float),
+    Column("date",Date),
     )
 
 
-categoria = Table("categorias", meta,
-    Column("id_categoria", String(36), primary_key=True, unique=True, default=lambda: str(uuid.uuid4())),
-    Column("nombre", String(255))
+category = Table("categorys", meta,
+    Column("id", String(36), primary_key=True, unique=True, default=lambda: str(uuid.uuid4())),
+    Column("name", String(255))
 )
 
-categoriaCliente = Table("categorias_clientes", meta,
-Column("id_categoria", String(36), ForeignKey("categorias.id_categoria", name="fk_categoria_id")),
-    Column("id_cliente", String(255), ForeignKey("clientes.id_cliente", name="fk_cliente_id"))
+categoryclient = Table("categorys_clients", meta,
+Column("id_category", String(36), ForeignKey("categorys.id", name="fk_category_id")),
+    Column("id_client", String(255), ForeignKey("client.id", name="fk_client_id"))
 )
 meta.create_all(engine)

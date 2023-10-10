@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from routes.cliente import clte
-from routes.categoria import cat
-from routes.movimientos import mvnto
-from routes.cuenta import cnta
-from routes.categoriacliente import catClien
+from routes.client import clte
+from routes.category import cat
+from routes.motion import mvnto
+from routes.account import cnta
+from routes.categoryclient import catClien
 
 
 app = FastAPI(
