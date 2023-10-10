@@ -30,6 +30,8 @@ Se puede crear de forma manual
 
 Para crear la base:
 
+```
+
 CREATE DATABASE challengeBanza;
 
 
@@ -69,3 +71,7 @@ CREATE TABLE motions (
     date DATE,
     FOREIGN KEY (id_account) REFERENCES accounts(id)
 );
+
+
+
+```
